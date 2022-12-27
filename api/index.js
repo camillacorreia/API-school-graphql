@@ -1,4 +1,5 @@
 const { ApolloServer, gql } = require('apollo-server');
+const userSchema = require('./user/schema');
 
 const users = [
   {
@@ -11,12 +12,7 @@ const users = [
   }
 ]
 
-const typeDefs = gql`
-  type User {
-    nome: String!
-    ativo: Boolean!
-    email: String
-  }
-`
+const typeDefs = [userSchema];
+const resolvers = {};
 
 const server = new ApolloServer({ typeDefs, resolvers });
