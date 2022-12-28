@@ -2,10 +2,10 @@
   "users": [
     {
       "id": 1,
-      "nome": "Ana Torre",
+      "nome": "Marcos",
       "ativo": true,
-      "email": "a@a.com",
-      "role": 1
+      "email": "marcos@hotmail.com",
+      "role": 2
     },
     {
       "id": 2,
