@@ -4,6 +4,8 @@
 
 ## 💻 Projeto
 
+API em GraphQL de uma escola de inglês.
+
 O servidor GraphQL faz uma interface entre fontes de dados e disponibiliza esses dados para qualquer plataforma. Ou seja, ele pode selecionar dados de uma API REST, de microsserviços, de uma database.
 
 ## ℹ️ How To Use
@@ -22,11 +24,14 @@ $ npm start
 ### Queries
 
 #### Users
-```bash
+```graphql
   query() {
     users {
       nome
+      ativo
+      email
       role {
+        id
         type
       }
     }
@@ -34,11 +39,14 @@ $ npm start
 ```
 
 #### User
-```bash
+```graphql
   query($userId: ID!) {
     user(id: $userId) {
       nome
+      ativo
+      email
       role {
+        id
         type
       }
     }
@@ -47,5 +55,28 @@ $ npm start
   # variables
   {
     "userId": 1
+  }
+```
+
+### Mutations
+
+#### Adicionar User
+```graphql
+  mutation($nome: String!, $ativo: Boolean!, $email: String, $role: String!) {
+    adicionaUser(nome: $nome, ativo: $ativo, email: $email, role: $role) {
+      nome
+      email
+      role {
+        type
+      }
+    }
+  }
+
+  # variables
+  {
+    "nome": "Camilla",
+    "ativo": true,
+    "email": "camillajesuscorreia@hotmail.com",
+    "role": "DOCENTE"
   }
 ```
