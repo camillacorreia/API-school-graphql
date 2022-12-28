@@ -62,8 +62,8 @@ $ npm start
 
 #### Adicionar User
 ```graphql
-  mutation($nome: String!, $ativo: Boolean!, $email: String, $role: String!) {
-    adicionarUser(nome: $nome, ativo: $ativo, email: $email, role: $role) {
+  mutation($user: UserInput) {
+    adicionarUser(user: $user) {
       nome
       ativo
       email
@@ -75,46 +75,42 @@ $ npm start
 
   # variables
   {
-    "nome": "Camilla",
-    "ativo": true,
-    "email": "camillajesuscorreia@hotmail.com",
-    "role": "DOCENTE"
+    "user": {
+      "nome": "Camilla",
+      "ativo": true,
+      "email": "camillajesuscorreia@hotmail.com",
+      "role": "DOCENTE"
+    }
   }
 ```
 
 #### Atualizar User
 ```graphql
-  mutation($id: ID!, $nome: String!, $ativo: Boolean!, $email: String!, $role: String!) {
-    atualizarUser(nome: $nome, ativo: $ativo, email: $email, role: $role) {
-      nome
-      ativo
-      email
-      role {
-        type
-      }
+  mutation($id: ID!, $user: UserInput) {
+    atualizarUser(id: $id, user: $user) {
+      code
+      message
     }
   }
 
   # variables
   {
-    "id: 1,
-    "nome": "Camilla",
-    "ativo": true,
-    "email": "camillajesuscorreia@hotmail.com",
-    "role": "ESTUDANTE"
+    "id": 1,
+    "user": {
+      "nome": "Marcos",
+      "ativo": true,
+      "email": "marcos@hotmail.com",
+      "role": "ESTUDANTE"
+    }
   }
 ```
 
 #### Deletar User
 ```graphql
   mutation($userId: ID!) {
-    deletarUser(nome: $nome, ativo: $ativo, email: $email, role: $role) {
-      nome
-      ativo
-      email
-      role {
-        type
-      }
+    deletarUser(id: $userId) {
+      code
+      message
     }
   }
 

@@ -1,11 +1,11 @@
 {
   "users": [
     {
-      "id": 1,
       "nome": "Marcos",
       "ativo": true,
       "email": "marcos@hotmail.com",
-      "role": 2
+      "role": 2,
+      "id": 1
     },
     {
       "id": 2,
@@ -29,13 +29,6 @@
       "role": 2
     },
     {
-      "id": 5,
-      "nome": "Silvia Souza",
-      "ativo": true,
-      "email": "s@s.com",
-      "role": 2
-    },
-    {
       "id": 6,
       "nome": "Marcia Silva",
       "ativo": true,
@@ -55,6 +48,13 @@
       "email": "",
       "role": 2,
       "id": 8
+    },
+    {
+      "nome": "Marcos",
+      "ativo": true,
+      "email": "marcos@hotmail.com",
+      "role": 2,
+      "id": 9
     }
   ],
   "roles": [
