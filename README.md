@@ -12,6 +12,9 @@ O servidor GraphQL faz uma interface entre fontes de dados e disponibiliza esses
 
 ```bash
 
+# Install dependencies
+$ npm install
+
 # Run API Rest
 $ npx json-server --watch api/data/dados.json
 
