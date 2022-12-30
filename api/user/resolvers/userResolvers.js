@@ -22,6 +22,9 @@ const userResolvers = {
     atualizarUser: async (root, novosDados, { dataSources }) => dataSources.usersAPI.atualizarUser(novosDados),
     deletarUser: async (root, { id }, { dataSources }) => dataSources.usersAPI.deletarUser(id),
   },
+  User: {
+    matriculas: (parent, _, { dataSources }) => dataSources.matriculasAPI.getMatriculasPorEstudante(parent.id),
+  },
 };
 
 module.exports = userResolvers;
