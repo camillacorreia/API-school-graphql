@@ -14,13 +14,13 @@ const userResolvers = {
     parseLiteral: (ast) => new Date(ast.value),
   }),
   Query: {
-    users: (root, args, { dataSources }) => dataSources.usersAPI.getUsers(),
-    user: (root, { id }, { dataSources }) => dataSources.usersAPI.getUserById(id),
+    users: (_, args, { dataSources }) => dataSources.usersAPI.getUsers(args),
+    user: (_, { id }, { dataSources }) => dataSources.usersAPI.getUserById(id),
   },
   Mutation: {
-    adicionarUser: async (root, { user }, { dataSources }) => dataSources.usersAPI.adicionarUser(user),
-    atualizarUser: async (root, novosDados, { dataSources }) => dataSources.usersAPI.atualizarUser(novosDados),
-    deletarUser: async (root, { id }, { dataSources }) => dataSources.usersAPI.deletarUser(id),
+    adicionarUser: async (_, { user }, { dataSources }) => dataSources.usersAPI.adicionarUser(user),
+    atualizarUser: async (_, novosDados, { dataSources }) => dataSources.usersAPI.atualizarUser(novosDados),
+    deletarUser: async (_, { id }, { dataSources }) => dataSources.usersAPI.deletarUser(id),
   },
   User: {
     matriculas: (parent, _, { dataSources }) => dataSources.matriculasAPI.getMatriculasPorEstudante
