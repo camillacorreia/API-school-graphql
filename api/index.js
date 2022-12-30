@@ -10,7 +10,9 @@ const turmaSchema = require('./turma/schema/turma.graphql');
 const turmaResolvers = require('./turma/resolvers/turmaResolvers');
 const TurmasAPI = require('./turma/datasource/turma');
 
-const typeDefs = mergeTypeDefs([userSchema, turmaSchema]);
+const { matriculaSchema } = require('./matricula/schema/matricula.graphql');
+
+const typeDefs = mergeTypeDefs([userSchema, turmaSchema, matriculaSchema]);
 const resolvers = [userResolvers, turmaResolvers];
 
 const dbConfig = {
