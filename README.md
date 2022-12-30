@@ -61,17 +61,17 @@ $ npm start
   }
 ```
 
-#### Users
+#### Turmas
 ```graphql
   query() {
-    users {
-      nome
-      ativo
-      email
-      role {
-        id
-        type
-      }
+    turmas {
+      id
+      descricao
+      horario
+      vagas
+      inicio
+      docente
+      createdAt
     }
   }
 ```
@@ -93,22 +93,6 @@ $ npm start
   # variables
   {
     "turmaId": 1
-  }
-```
-
-
-#### Turmas
-```graphql
-  query() {
-    turmas {
-      id
-      descricao
-      horario
-      vagas
-      inicio
-      docente
-      createdAt
-    }
   }
 ```
 
@@ -141,7 +125,7 @@ $ npm start
 #### Atualizar User
 ```graphql
   mutation($userId: ID!, $user: UserInput) {
-    atualizarUser(id: $id, user: $user) {
+    atualizarUser(id: $userId, user: $user) {
       code
       message
     }
@@ -203,7 +187,7 @@ $ npm start
 #### Atualizar Turma
 ```graphql
   mutation($turmaId: ID!, $turma: TurmaInput) {
-    atualizarTurma(id: $id, turma: $turma) {
+    atualizarTurma(id: $turmaId, turma: $turma) {
       id
       descricao
       horario
@@ -230,7 +214,7 @@ $ npm start
 #### Deletar Turma
 ```graphql
   mutation($turmaId: ID!) {
-    deletarTurma(id: $userId) {
+    deletarTurma(id: $turmaId) {
       message
     }
   }
