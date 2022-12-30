@@ -10,10 +10,16 @@ class TurmasAPI extends SQLDataSource {
   }
 
   // SELECT * FROM turmas
-  async getTurmas() {
+  async getTurmas({ page = 0, pageOffset = Infinity }) {
+    const registroInicial = page === 0 || page === 1
+      ? 0
+      : (page * pageOffset) - 1;
+
     return this.db
       .select('*')
-      .from('turmas');
+      .from('turmas')
+      .offset(registroInicial)
+      .limit(pageOffset);
   }
 
   // SELECT * FROM turmas WHERE id = ?
