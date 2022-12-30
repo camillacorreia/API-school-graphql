@@ -1,17 +1,17 @@
-const { SQLDataSource } = require('datasource-sql')
+const { SQLDataSource } = require('datasource-sql');
 
 class TurmasAPI extends SQLDataSource {
   constructor(dbConfig) {
-    super(dbConfig)
+    super(dbConfig);
     this.Resposta = {
-      message: ""
-    }
+      message: '',
+    };
   }
 
   async getTurmas() {
-    return this.db 
+    return this.db
       .select('*')
-      .from('turmas')
+      .from('turmas');
   }
   // SELECT * FROM turmas
 
@@ -19,8 +19,8 @@ class TurmasAPI extends SQLDataSource {
     const turma = await this.db
       .select('*')
       .from('turmas')
-      .where({ id: Number(id)})
-    return turma[0]
+      .where({ id: Number(id) });
+    return turma[0];
   }
   // SELECT * FROM turmas WHERE id = ?
 
@@ -28,10 +28,10 @@ class TurmasAPI extends SQLDataSource {
     const novaTurmaId = await this.db
       .insert(novaTurma)
       .returning('id')
-      .into('turmas')
-  
-    const turmaInserida = await this.getTurma(novaTurmaId[0])
-    return ({ ...turmaInserida })
+      .into('turmas');
+
+    const turmaInserida = await this.getTurma(novaTurmaId[0]);
+    return ({ ...turmaInserida });
   }
   // INSERT INTO turmas (descricao, docente_id, horario, inicio, vagas) values (?, ?, ?, ?, ?)
   // SELECT * FROM turmas WHERE id = ?
@@ -40,25 +40,25 @@ class TurmasAPI extends SQLDataSource {
     await this.db
       .update({ ...novosDados.turma })
       .where({ id: Number(novosDados.id) })
-      .into('turmas')
+      .into('turmas');
 
-    const turmaAtualizada = await this.getTurma(novosDados.id)
+    const turmaAtualizada = await this.getTurma(novosDados.id);
     return ({
-      ...turmaAtualizada
-    })
+      ...turmaAtualizada,
+    });
   }
   // UPDATE turmas SET descricao = ?, horario = ?, vagas = ?, inicio = ?, docente_id = ? where id = ?
   // SELECT * FROM turmas WHERE id = ?
 
   async deletarTurma(id) {
     await this.db('turmas')
-      .where({ id: id })
-      .del()
+      .where({ id })
+      .del();
 
-    this.Resposta.message = "registro deletado"
-    return this.Resposta
+    this.Resposta.message = 'registro deletado';
+    return this.Resposta;
   }
   // DELETE FROM turmas WHERE id = ?
 }
 
-module.exports = TurmasAPI
+module.exports = TurmasAPI;
