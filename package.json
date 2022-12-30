@@ -4,7 +4,7 @@
   "description": "API em GraphQL de uma escola de inglês.",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon -e js,json, graphql ./api/index.js",
+    "start": "DEBUG=knex:query nodemon -e js,json, graphql ./api/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint api --ext .js",
     "lint:fix": "npm run lint -- --fix"
@@ -25,6 +25,7 @@
     "apollo-datasource": "^3.3.2",
     "apollo-datasource-rest": "^3.7.0",
     "apollo-server": "^3.11.1",
+    "dataloader": "^2.1.0",
     "datasource-sql": "^2.0.1",
     "graphql": "^16.6.0",
     "graphql-tools": "^8.3.14",

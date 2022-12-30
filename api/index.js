@@ -23,7 +23,7 @@ const server = new ApolloServer({
   dataSources: () => ({
     usersAPI: new UsersAPI(),
     turmasAPI: new TurmasAPI(dbConfig),
-    MatriculasAPI: new MatriculasAPI(dbConfig),
+    matriculasAPI: new MatriculasAPI(dbConfig),
   }),
 });
 
