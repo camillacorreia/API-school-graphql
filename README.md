@@ -61,6 +61,57 @@ $ npm start
   }
 ```
 
+#### Users
+```graphql
+  query() {
+    users {
+      nome
+      ativo
+      email
+      role {
+        id
+        type
+      }
+    }
+  }
+```
+
+#### Turma
+```graphql
+  query($turmaId: ID!) {
+    turma(id: $turmaId) {
+      id
+      descricao
+      horario
+      vagas
+      inicio
+      docente
+      createdAt
+    }
+  }
+
+  # variables
+  {
+    "turmaId": 1
+  }
+```
+
+
+#### Turmas
+```graphql
+  query() {
+    turmas {
+      id
+      descricao
+      horario
+      vagas
+      inicio
+      docente
+      createdAt
+    }
+  }
+```
+
 ### Mutations
 
 #### Adicionar User
@@ -89,7 +140,7 @@ $ npm start
 
 #### Atualizar User
 ```graphql
-  mutation($id: ID!, $user: UserInput) {
+  mutation($userId: ID!, $user: UserInput) {
     atualizarUser(id: $id, user: $user) {
       code
       message
@@ -98,7 +149,7 @@ $ npm start
 
   # variables
   {
-    "id": 1,
+    "userId": 1,
     "user": {
       "nome": "Marcos",
       "ativo": true,
@@ -120,5 +171,72 @@ $ npm start
   # variables
   {
     "userId": 1
+  }
+```
+
+#### Adicionar Turma
+```graphql
+  mutation($turma: TurmaInput) {
+    adicionarTurma(turma: $turma) {
+      id
+      descricao
+      horario
+      vagas
+      inicio
+      docente
+      createdAt
+    }
+  }
+
+  # variables
+  {
+    "turma": {
+      "descricao": "super avançado",
+      "horario": "noturno",
+      "vagas": 5,
+      "inicio": "2020-12-01T00:00:00.000Z",
+      "docente_id": 5
+    }
+  }
+```
+
+#### Atualizar Turma
+```graphql
+  mutation($turmaId: ID!, $turma: TurmaInput) {
+    atualizarTurma(id: $id, turma: $turma) {
+      id
+      descricao
+      horario
+      vagas
+      inicio
+      docente
+      createdAt
+    }
+  }
+
+  # variables
+  {
+    "turmaId": 1,
+    "turma": {
+      "descricao": "super avançado",
+      "horario": "noturno",
+      "vagas": 8,
+      "inicio": "2020-12-01T00:00:00.000Z",
+      "docente_id": 5
+    }
+  }
+```
+
+#### Deletar Turma
+```graphql
+  mutation($turmaId: ID!) {
+    deletarTurma(id: $userId) {
+      message
+    }
+  }
+
+  # variables
+  {
+    "turmaId": 1
   }
 ```
